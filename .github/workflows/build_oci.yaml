@@ -34,8 +34,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms:
-            - linux/arm/v5
+          platforms: linux/arm/v5
           tags: |
               ghcr.io/${{ env.IMAGE_NAME }}:${{ github.event.inputs.version }}-arm32v5
               ${{ github.event.inputs.tag_latest == 'true' && format('ghcr.io/{0}:latest-arm32v5', env.IMAGE_NAME) || null }}
