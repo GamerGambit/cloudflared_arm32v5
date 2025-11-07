@@ -52,7 +52,7 @@ jobs:
           DOCKER_BUILD_RECORD_UPLOAD: false
 
       - name: Save Docker Image as File
-        run: docker save ghcr.io/${{ env.IMAGE_NAME }}:${{ github.event.inputs.tag_latest == 'true' && latest-arm32v5 || format('{0}-arm32v5', github.event.inputs.version) }} | gzip > dockerimage.tar.gz
+        run: docker save ghcr.io/${{ env.IMAGE_NAME }}:${{ github.event.inputs.tag_latest == 'true' && 'latest-arm32v5' || format('{0}-arm32v5', github.event.inputs.version) }} | gzip > dockerimage.tar.gz
 
       - name: Publish Docker Image Artifact
         uses: actions/upload-artifact@v4
